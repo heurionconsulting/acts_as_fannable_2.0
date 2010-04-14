@@ -1,0 +1,66 @@
+Acts As Fannable
+================================================================
+
+Allows users to become fans to different models.
+
+Installation
+----------------------------------------------------------------
+
+Install
+ * Run the following command:
+ go to vendors/plugins folder and run the following command
+ git clone git://github.com/heurionconsulting/acts_as_fannable.git
+
+ * Once the plugin is installed run 
+ ruby script/generate acts_as_fannable
+ this shall create the necessary model and migration file.
+
+ * Run migrations to create tables
+ rake db:migrate 
+ this shall create the fans table. You can run this command along with your other migrations as well 
+
+
+Usage
+---------------------------------------------------------------
+ 
+ * Make your ActiveRecord model acts as fan.
+ 
+ class Model < ActiveRecord::Base
+ 	acts_as_fannable
+ end
+ 
+ * Add a fan to a model instance
+ 
+ model = Model.new
+ fan = Fan.new
+ fan.user_id = user.id (or self.current_user.id if acts_as_authenticated or restful authentication being used)
+ model.fans << fan
+ or 
+ model.add_fan(fan)
+ 
+Credits
+---------------------------------------------------------------------
+Acts As Fannable 2.0
+
+Ganesh Mohan -- Heurion Consulting. For rewriting the plugin to support Rails 2.x format and also for writing plugin generators and rspec code
+Satish N Kota -- Heurion Consulting. For review of plugin and implementing the original plugin.
+
+Acts As Fannable 1.0
+
+Satish N Kota - Heurion Consutling - This plugin is influenced by Acts As Commentable and I am thankful for them
+for writing a wonderful good code.
+
+Contact
+--------------------------------------------------------------------
+
+Any issues regarding bugs in plugin code or in the data/information can be brought to notice of Heurion Consulting
+
+email: info@heurionconsulting.com
+website: www.heurionconsulting.com
+blog: http://railsvoice.wordpress.com
+wiki: http://wiki.github.com/heurionconsulting/acts_as_fannable_2.0
+
+License
+---------------------------------------------------------------------
+
+Refer to MIT License file
